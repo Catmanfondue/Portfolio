@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const nav = props => {
+const nav = () => {
   return (
     <nav>
-      <span>Hello there</span>
+      <div id='home'>Home</div>
     </nav>
   );
 };

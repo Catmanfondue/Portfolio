@@ -1,18 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Portfolio from './Portfolio';
+import Nav from './components/nav/nav';
 
 // this is my portofolio website.
 // cool sections would be about, my work, and reviews
 // another cool section is hack me, provide a form and a db table next to it and ask them to attempt to delete the table
 
-function App() {
+const Portfolio = () => {
   return (
-    <div className='App'>
-      <Portfolio />
+    <div>
+      <Nav />
+      body text
     </div>
   );
-}
+};
 
-export default App;
+Portfolio.propTypes = {};
+
+export default Portfolio;
