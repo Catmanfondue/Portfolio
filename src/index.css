@@ -3,6 +3,6 @@ body {
   padding: 0;
 }
 
-nav {
-  background: #efefef;
+html {
+  scroll-behavior: smooth;
 }

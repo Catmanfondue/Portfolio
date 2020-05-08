@@ -1,17 +1,66 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './App.scss';
 import Portfolio from './Portfolio';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { Paper } from '@material-ui/core';
 
-// this is my portofolio website.
-// cool sections would be about, my work, and reviews
-// another cool section is hack me, provide a form and a db table next to it and ask them to attempt to delete the table
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 function App() {
+  // if local storage has nothing, or is set to false, return false
+  // useMediaQuery is another approach
+  let isUsingDarkMode =
+    localStorage.getItem('prefersDarkMode') === null ||
+    localStorage.getItem('prefersDarkMode') === 'false'
+      ? false
+      : true;
+
+  const [prefersDarkMode, setPrefersDarkMode] = useState(isUsingDarkMode);
+
+  const makeTheme = () => {
+    let renderedTheme;
+    if (prefersDarkMode) {
+      renderedTheme = createMuiTheme({
+        palette: {
+          type: prefersDarkMode ? 'dark' : 'light',
+          primary: {
+            main: '#D95D39',
+          },
+          secondary: {
+            main: '#F0A202',
+          },
+        },
+      });
+    } else {
+      renderedTheme = createMuiTheme({
+        palette: {
+          type: prefersDarkMode ? 'dark' : 'light',
+          primary: {
+            main: '#D95D39',
+          },
+          secondary: {
+            main: '#F0A202',
+          },
+        },
+      });
+    }
+    return renderedTheme;
+  };
+
+  const theme = makeTheme();
+
   return (
-    <div className='App'>
-      <Portfolio />
-    </div>
+    <React.Fragment>
+      <CssBaseline />
+      <ThemeProvider theme={theme}>
+        <Paper>
+          <Portfolio
+            prefersDarkMode={prefersDarkMode}
+            setPrefersDarkMode={setPrefersDarkMode}
+          />
+        </Paper>
+      </ThemeProvider>
+    </React.Fragment>
   );
 }
 
