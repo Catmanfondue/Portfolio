@@ -3,32 +3,37 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles({
-  aboutMeDiv: {
-    backgroundColor: '#efefef ',
-    color: '#000',
-    height: '',
-  },
-  rightSide: {
-    backgroundColor: '#ccc',
-  },
+  aboutMeDiv: {},
+  rightSide: {},
 });
 
 const AboutMe = () => {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Grid id='aboutMe' container item className={classes.aboutMeDiv}>
-        <Grid item xs={4}>
-          <h1>About Me</h1>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis
-            molestias tempora quam, quos officiis doloribus. Obcaecati ipsa
-            expedita blanditiis dignissimos, deserunt minus autem vel dicta
-            ipsum dolore ut fugit corporis.
-          </p>
+      <Grid
+        id='landing'
+        container
+        className={classes.landingDiv}
+        direction='row'
+        justify='center'
+        alignItems='stretch'
+      >
+        <Grid
+          container
+          item
+          xs={9}
+          alignItems='flex-start'
+          direction='column'
+          spacing={3}
+        >
+          <Grid item>
+            <h1>About Me</h1>
+            <p></p>
+          </Grid>
         </Grid>
-        <Grid item xs={8} className={classes.rightSide}>
-          <h2>Hello</h2>
+        <Grid container item xs={3} justify='flex-end'>
+          <Grid item>{/* image */}</Grid>
         </Grid>
       </Grid>
     </React.Fragment>

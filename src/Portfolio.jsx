@@ -51,6 +51,7 @@ const Portfolio = (props) => {
           <Switch>
             <Route exact path='/'>
               <Landing />
+              <AboutMe />
             </Route>
             <Route exact path='/About'>
               <AboutMe />

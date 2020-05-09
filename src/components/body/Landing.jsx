@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   landingDiv: {
-    padding: '1rem',
+    // padding: '1rem',
   },
   myName: {
     textAlign: 'center',
