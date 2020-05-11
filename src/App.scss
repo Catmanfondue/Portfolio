@@ -3,3 +3,19 @@ a {
   text-decoration: none;
   color: unset;
 }
+
+h1 {
+  margin: 0;
+}
+
+.aboutfadein {
+  opacity: 0;
+}
+
+// assign to parent and will vertically center children
+.flex {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

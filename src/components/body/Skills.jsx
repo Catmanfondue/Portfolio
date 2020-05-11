@@ -4,13 +4,9 @@ import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles({
   skillsDiv: {
-    backgroundColor: '#efefef ',
-    color: '#000',
     height: '100vh',
   },
-  rightSide: {
-    backgroundColor: '#ccc',
-  },
+  rightSide: {},
 });
 
 const Skills = () => {
