@@ -6,6 +6,7 @@ import Landing from './components/body/Landing';
 import AboutMe from './components/body/AboutMe';
 import Skills from './components/body/Skills';
 import ContactMe from './components/body/ContactMe';
+import Footer from './components/body/Footer';
 
 // this is my portofolio website.
 
@@ -25,6 +26,9 @@ const Portfolio = (props) => {
         <Skills />
         <ContactMe />
       </main>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 };

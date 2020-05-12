@@ -4,7 +4,6 @@ import { useIntersection } from 'react-use';
 import gsap from 'gsap';
 import { TweenMax, Power3 } from 'gsap';
 import Grid from '@material-ui/core/Grid';
-import CodingPic from '../../assets/coding1.jpg';
 import Button from '@material-ui/core/Button';
 
 import Nav from '../nav/Nav';

@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
+import Resume from '../../assets/Eckert_Resume.pdf';
+
 // icons
 import IconButton from '@material-ui/core/IconButton';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
@@ -24,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
   linksContainer: {
     margin: 'auto',
     display: 'flex',
-    justifyContent: 'space-between',
-    flex: '.4',
+    justifyContent: 'space-around',
+    flex: '.6',
   },
   link: {
     fontSize: '1rem',
@@ -65,6 +67,14 @@ const Nav = (props) => {
             </a>
             <a href='#contactMe' className={classes.link}>
               Contact
+            </a>
+            <a
+              href={Resume}
+              target='_blank'
+              rel='noopener noreferrer'
+              className={classes.link}
+            >
+              Resume
             </a>
           </div>
           <div className={classes.professionalLinks}>

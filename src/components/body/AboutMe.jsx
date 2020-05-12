@@ -8,10 +8,34 @@ import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles((theme) => ({
   aboutMeDiv: {
-    opacity: 0,
-    paddingTop: 100,
+    padding: '100px 20px 0 20px',
     marginTop: 1,
     height: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  aboutContent: {
+    display: 'flex',
+    flexDirection: 'row',
+    height: '100%',
+    opacity: 0,
+  },
+  aboutLeft: {
+    flex: '.5',
+    alignSelf: 'center',
+  },
+  aboutRight: {
+    flex: '.5',
+    display: 'flex',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    flexDirection: 'column',
+    height: '100%',
+  },
+  photo: {
+    width: 300,
+    height: 300,
+    margin: 'auto',
   },
 }));
 const AboutMe = () => {
@@ -25,11 +49,11 @@ const AboutMe = () => {
   });
 
   const fadeOut = (element) => {
-    // gsap.to(element, 1, {
-    //   opacity: 0,
-    //   y: -20,
-    //   ease: 'power4.out',
-    // });
+    gsap.to(element, 1, {
+      opacity: 0,
+      y: -20,
+      ease: 'power4.out',
+    });
   };
 
   const fadeIn = (element) => {
@@ -50,22 +74,18 @@ const AboutMe = () => {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <section
-        id='about'
-        ref={aboutRef}
-        className={classes.aboutMeDiv + ' aboutFadeIn'}
-      >
+      <section id='about' ref={aboutRef} className={classes.aboutMeDiv}>
         <h1>About Me</h1>
-        <div className={classes.aboutContent}>
-          <div>
+        <div className={classes.aboutContent + ' aboutFadeIn'}>
+          <div className={classes.aboutLeft}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum enim
             voluptates quis quod, adipisci dicta doloribus iste a. Veniam nisi
             praesentium, nulla doloremque tenetur nemo. Blanditiis aperiam
             delectus odit fugit sit aliquid eos fugiat vitae, commodi, iste
             sapiente voluptates qui.
           </div>
-          <div>
-            <Avatar src={PicOfMe} />
+          <div className={classes.aboutRight}>
+            <Avatar src={PicOfMe} className={classes.photo} />
           </div>
         </div>
       </section>
