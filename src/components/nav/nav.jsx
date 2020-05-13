@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     width: '100%',
     bottom: 0,
+    visibility: 'hidden',
   },
   name: {
     marginRight: 120,

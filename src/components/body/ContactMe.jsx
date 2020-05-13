@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { useIntersection } from 'react-use';
+import gsap from 'gsap';
 import Button from '@material-ui/core/Button';
 
 // images
@@ -60,6 +62,78 @@ const useStyles = makeStyles((theme) => ({
 const ContactMe = () => {
   const classes = useStyles();
 
+  const fullTimeDivRef = useRef(null);
+  const freeLanceDivRef = useRef(null);
+  const voulenteerDivRef = useRef(null);
+
+  // threshhold and intersection ratio should equal
+  const fullTimeIntersection = useIntersection(fullTimeDivRef, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.6,
+  });
+
+  const freeLanceIntersection = useIntersection(freeLanceDivRef, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.6,
+  });
+
+  const voulenteerIntersection = useIntersection(voulenteerDivRef, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.6,
+  });
+
+  const fadeOut = (element) => {
+    gsap.to('#' + element + 'Left', 1, {
+      opacity: 0,
+      x: -30,
+      ease: 'power4.out',
+    });
+
+    gsap.to('#' + element + 'Right', 1, {
+      opacity: 0,
+      x: 30,
+      ease: 'power4.out',
+    });
+  };
+
+  const fadeIn = (element) => {
+    gsap.to('#' + element + 'Left', 1, {
+      opacity: 1,
+      x: 0,
+      ease: 'power4.out',
+    });
+
+    gsap.to('#' + element + 'Right', 1, {
+      opacity: 1,
+      x: 0,
+      ease: 'power4.out',
+    });
+  };
+
+  if (fullTimeIntersection) {
+    fullTimeIntersection.intersectionRatio > 0.6
+      ? // Reached
+        fadeIn('fullTime')
+      : fadeOut('fullTime');
+  }
+
+  if (freeLanceIntersection) {
+    freeLanceIntersection.intersectionRatio > 0.6
+      ? // Reached
+        fadeIn('freeLance')
+      : fadeOut('freeLance');
+  }
+
+  if (voulenteerIntersection) {
+    voulenteerIntersection.intersectionRatio > 0.6
+      ? // Reached
+        fadeIn('voulenteer')
+      : fadeOut('voulenteer');
+  }
+
   return (
     <section id='contactMe' className={classes.contactMe}>
       <h1>Contact Me</h1>
@@ -70,16 +144,17 @@ const ContactMe = () => {
 
       <div className={classes.container}>
         {/* Full Time */}
-        <div className={classes.child}>
+        <div id='fullTime' ref={fullTimeDivRef} className={classes.child}>
           <div className={classes.checkeredImageDiv}>
             <img
+              id='fullTimeLeft'
               src={FullTime}
               alt='Full Time Work'
               className={classes.image}
             />
           </div>
           <div className={classes.checkeredDescDiv}>
-            <div className={classes.descContent}>
+            <div id='fullTimeRight' className={classes.descContent}>
               <h2 className={classes.rowTitle}>Full Time Opportunities</h2>
               <p className={classes.descText}>
                 I am planning a move out of my hometown of Green Bay, Wisconsin
@@ -105,9 +180,9 @@ const ContactMe = () => {
           </div>
         </div>
         {/* Free Lance */}
-        <div className={classes.child}>
+        <div id='freeLance' ref={freeLanceDivRef} className={classes.child}>
           <div className={classes.checkeredDescDiv}>
-            <div className={classes.descContent}>
+            <div id='freeLanceLeft' className={classes.descContent}>
               <h2 className={classes.rowTitle}>Freelance Opportunities</h2>
               <p className={classes.descText}>
                 I am always open to Freelance opportunities and would love to
@@ -122,16 +197,26 @@ const ContactMe = () => {
             </div>
           </div>
           <div className={classes.checkeredImageDiv}>
-            <img src={FreeLance} alt='Freelance' className={classes.image} />
+            <img
+              id='freeLanceRight'
+              src={FreeLance}
+              alt='Freelance'
+              className={classes.image}
+            />
           </div>
         </div>
         {/* Voulenteer */}
-        <div className={classes.child}>
+        <div id='voulenteer' ref={voulenteerDivRef} className={classes.child}>
           <div className={classes.checkeredImageDiv}>
-            <img src={Voulenteer} alt='Voulenteer' className={classes.image} />
+            <img
+              id='voulenteerLeft'
+              src={Voulenteer}
+              alt='Voulenteer'
+              className={classes.image}
+            />
           </div>
           <div className={classes.checkeredDescDiv}>
-            <div className={classes.descContent}>
+            <div id='voulenteerRight' className={classes.descContent}>
               <h2 className={classes.rowTitle}>Voulenteer Opportunities</h2>
               <p className={classes.descText}>
                 I personally wish that I was exposed to technology and
