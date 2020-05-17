@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     '@media (max-width: 1024px)': {
       width: '100%',
-      fontSize: '2rem',
+      fontSize: '1.8rem',
     },
   },
   jobTitleText: {
