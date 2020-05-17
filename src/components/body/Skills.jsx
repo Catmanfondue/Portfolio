@@ -1,32 +1,37 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import SkillCard from './SkillCard';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   skillsDiv: {
-    backgroundColor: '#efefef',
+    backgroundColor: '#e0e0e0',
     color: '#000',
     padding: '100px 20px 0 20px',
     display: 'flex',
     flexDirection: 'column',
   },
-  rightSide: {},
-});
+  wrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'stretch',
+    margin: '1rem',
+  },
+}));
 
 const Skills = () => {
   const classes = useStyles();
+  const theme = useTheme();
+
   return (
     <section id='skills' className={classes.skillsDiv}>
       <h1>Skills</h1>
-      <li>HTML</li>
-      <li>CSS</li>
-      <li>React</li>
-      <li>Javascript</li>
-      <li>JSON</li>
-      <li>JQuery</li>
-      <li>Node</li>
-      <li>SQL</li>
-      <li>Perl</li>
+
+      <div className={classes.wrapper}>
+        <SkillCard name='Front End' borderColor={theme.palette.primary.main} />
+        <SkillCard name='Back End' borderColor={theme.palette.secondary.main} />
+      </div>
     </section>
   );
 };

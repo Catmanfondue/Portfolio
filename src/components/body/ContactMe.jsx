@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useIntersection } from 'react-use';
 import gsap from 'gsap';
@@ -26,6 +26,18 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
+    '@media (max-width: 1024px)': {
+      flexDirection: 'column',
+    },
+  },
+  inverseChild: {
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    '@media (max-width: 1024px)': {
+      flexDirection: 'column-reverse',
+    },
   },
   checkeredImageDiv: {
     flex: '.5',
@@ -43,6 +55,10 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
     borderBottom: '3px solid ' + theme.palette.secondary.main,
   },
+  contactDesc: {
+    textAlign: 'center',
+    fontSize: '1.5rem',
+  },
   descContent: {
     display: 'flex',
     flexDirection: 'column',
@@ -50,16 +66,26 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 30px 30px 30px',
     justifyContent: 'space-around',
     fontSize: '1.2rem',
+    '@media (max-width: 1024px)': {
+      padding: '30px 0',
+    },
   },
   descText: {
     // margin: 'auto',
   },
   email: {
     borderBottom: '3px solid ' + theme.palette.primary.main,
+    '&:hover': {
+      background: theme.palette.primary.main,
+    },
   },
 }));
 
 const ContactMe = () => {
+  const [fullTimeAnimated, setFullTimeAnimated] = useState(false);
+  const [freeLanceAnimated, setFreeLanceAnimated] = useState(false);
+  const [voulenteerAnimated, setVoulenteerAnimated] = useState(false);
+
   const classes = useStyles();
 
   const fullTimeDivRef = useRef(null);
@@ -70,19 +96,19 @@ const ContactMe = () => {
   const fullTimeIntersection = useIntersection(fullTimeDivRef, {
     root: null,
     rootMargin: '0px',
-    threshold: 0.6,
+    threshold: 0.4,
   });
 
   const freeLanceIntersection = useIntersection(freeLanceDivRef, {
     root: null,
     rootMargin: '0px',
-    threshold: 0.6,
+    threshold: 0.4,
   });
 
   const voulenteerIntersection = useIntersection(voulenteerDivRef, {
     root: null,
     rootMargin: '0px',
-    threshold: 0.6,
+    threshold: 0.4,
   });
 
   const fadeOut = (element) => {
@@ -113,33 +139,41 @@ const ContactMe = () => {
     });
   };
 
-  if (fullTimeIntersection) {
-    fullTimeIntersection.intersectionRatio > 0.6
-      ? // Reached
-        fadeIn('fullTime')
-      : fadeOut('fullTime');
+  if (fullTimeIntersection && !fullTimeAnimated) {
+    if (fullTimeIntersection.intersectionRatio > 0.4) {
+      fadeIn('fullTime');
+      setFullTimeAnimated(true);
+    } else {
+      fadeOut('fullTime');
+    }
   }
 
-  if (freeLanceIntersection) {
-    freeLanceIntersection.intersectionRatio > 0.6
-      ? // Reached
-        fadeIn('freeLance')
-      : fadeOut('freeLance');
+  if (freeLanceIntersection && !freeLanceAnimated) {
+    if (freeLanceIntersection.intersectionRatio > 0.4) {
+      fadeIn('freeLance');
+      setFreeLanceAnimated(true);
+    } else {
+      fadeOut('freeLance');
+    }
   }
 
-  if (voulenteerIntersection) {
-    voulenteerIntersection.intersectionRatio > 0.6
-      ? // Reached
-        fadeIn('voulenteer')
-      : fadeOut('voulenteer');
+  if (voulenteerIntersection && !voulenteerAnimated) {
+    if (voulenteerIntersection.intersectionRatio > 0.4) {
+      fadeIn('voulenteer');
+      setVoulenteerAnimated(true);
+    } else {
+      fadeOut('voulenteer');
+    }
   }
 
   return (
     <section id='contactMe' className={classes.contactMe}>
       <h1>Contact Me</h1>
-      <h3 style={{ textAlign: 'center' }}>
+      <h3 className={classes.contactDesc}>
         For any of the following, the best way to reach me is via my email at{' '}
-        <span className={classes.email}>zaceckert74@gmail.com</span>
+        <a href='mailto:zaceckert74@gmail.com' className={classes.email}>
+          zaceckert74@gmail.com
+        </a>
       </h3>
 
       <div className={classes.container}>
@@ -165,6 +199,7 @@ const ContactMe = () => {
                 <li>Denver, Colorado</li>
                 <li>Salt Lake City, Utah</li>
                 <li>Minneapolis, Minnesota</li>
+                <li>Remote Positions</li>
               </ul>
 
               <a
@@ -180,7 +215,11 @@ const ContactMe = () => {
           </div>
         </div>
         {/* Free Lance */}
-        <div id='freeLance' ref={freeLanceDivRef} className={classes.child}>
+        <div
+          id='freeLance'
+          ref={freeLanceDivRef}
+          className={classes.inverseChild}
+        >
           <div className={classes.checkeredDescDiv}>
             <div id='freeLanceLeft' className={classes.descContent}>
               <h2 className={classes.rowTitle}>Freelance Opportunities</h2>

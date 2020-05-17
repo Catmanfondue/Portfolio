@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import gsap from 'gsap';
 import { useIntersection } from 'react-use';
 import { makeStyles } from '@material-ui/core/styles';
@@ -13,12 +13,19 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
     display: 'flex',
     flexDirection: 'column',
+    '@media (max-width: 1024px)': {
+      height: 'unset',
+    },
   },
   aboutContent: {
     display: 'flex',
     flexDirection: 'row',
     height: '100%',
     opacity: 0,
+    marginBottom: 50,
+    '@media (max-width: 1024px)': {
+      flexDirection: 'column-reverse',
+    },
   },
   aboutLeft: {
     flex: '.5',
@@ -33,13 +40,21 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
   },
   photo: {
-    width: 300,
-    height: 300,
+    width: '40%',
+    height: 'unset',
+    // paddingBottom: '25%',
     margin: 'auto',
+  },
+  aboutMeDesc: {
+    fontSize: '1.5rem',
+    '@media (max-width: 1024px)': {
+      fontSize: '1rem',
+    },
   },
 }));
 const AboutMe = () => {
   const aboutRef = useRef(null);
+  const [animationPlayed, setAnimationPlayed] = useState(false);
 
   // threshhold and intersection ratio should equal
   const aboutInterSection = useIntersection(aboutRef, {
@@ -64,13 +79,19 @@ const AboutMe = () => {
         amount: 0.3,
       },
     });
+    setAnimationPlayed(true);
   };
 
-  aboutInterSection && aboutInterSection.intersectionRatio > 0.8
-    ? //  reached
-      fadeIn('.aboutFadeIn')
-    : // not Reached
-      fadeOut('.aboutFadeIn');
+  if (!animationPlayed) {
+    if (aboutInterSection && aboutInterSection.intersectionRatio > 0.8) {
+      fadeIn('.aboutFadeIn');
+    }
+    // only want to play once
+    // else {
+    //   fadeOut('.aboutFadeIn');
+    // }
+  }
+
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -78,11 +99,16 @@ const AboutMe = () => {
         <h1>About Me</h1>
         <div className={classes.aboutContent + ' aboutFadeIn'}>
           <div className={classes.aboutLeft}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum enim
-            voluptates quis quod, adipisci dicta doloribus iste a. Veniam nisi
-            praesentium, nulla doloremque tenetur nemo. Blanditiis aperiam
-            delectus odit fugit sit aliquid eos fugiat vitae, commodi, iste
-            sapiente voluptates qui.
+            <p className={classes.aboutMeDesc}>
+              Hello, my name is Zachary Eckert. I am a Front-End developer from
+              Green Bay, Wisconsin. I have an an Assoicate's Degree in Software
+              Development from Northeast Wisconsin Technical College.
+              <br />
+              <br />
+              When I'm not at work you can find me at playing basketball,
+              working out, or at a local coffee shop on a fun side project or
+              learning something new!
+            </p>
           </div>
           <div className={classes.aboutRight}>
             <Avatar src={PicOfMe} className={classes.photo} />

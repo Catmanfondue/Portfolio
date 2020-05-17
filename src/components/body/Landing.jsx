@@ -4,6 +4,7 @@ import { useIntersection } from 'react-use';
 import gsap from 'gsap';
 import LandingImage from '../../assets/landing.jpg';
 import dontKnowImage from '../../assets/dontKnow.jpg';
+import computerDeskImage from '../../assets/computerDesk.jpg';
 
 import { TweenMax, Expo, Power3 } from 'gsap';
 import Grid from '@material-ui/core/Grid';
@@ -15,110 +16,109 @@ const useStyles = makeStyles((theme) => ({
   landingSection: {
     width: '100%',
     height: '100vh',
+    '@media (max-width: 1024px)': {},
   },
-  landingOverlay: {
-    position: 'absolute',
+  wrapper: {
     width: '100%',
-    height: '100vh',
-    background: theme.palette.primary.main,
-    top: '0%',
-    zIndex: 1,
+    height: '100%',
+    position: 'relative',
+    background: [[`url(${computerDeskImage})`, 'no-repeat']],
+    backgroundPosition: '50%',
+    backgroundSize: 'cover',
+    overflow: 'hidden',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
   },
-  overlayName: {
-    fontSize: 100,
-    letterSpacing: 10,
-  },
-  overlayDesc: {
-    fontSize: 30,
-    letterSpacing: 3,
-  },
-  ellipseContainer: {
-    width: 608,
-    height: 608,
+  nameDiv: {
+    background: theme.palette.primary.main,
+    top: '10%',
     position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%,-50%)',
-    borderRadius: '50%',
-    margin: '0px auto',
-    background: [[`url(${dontKnowImage})`, 'no-repeat']],
-    backgroundPosition: '50%',
-    backgroundSize: 'cover',
+    fontSize: '3rem',
+    width: '50%',
+    height: '25%',
+    transform: 'skew(-45deg)',
+    marginLeft: 'calc(25vh/-2)',
+    paddingLeft: 'calc(25vh/2)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    '@media (max-width: 1024px)': {
+      width: '100%',
+      fontSize: '2rem',
+    },
   },
-  colorEllipse: {
-    width: '100%',
-    height: '100%',
-    borderRadius: '50%',
-    borderStyle: 'solid',
-    borderWidth: 10,
-    borderColor: theme.palette.primary.main + ' transparent',
-    transform: 'rotate(-45deg)',
-    top: 12,
-    left: 12,
-    animation: 'ellipseRotate 15s ease-in-out infinite',
+  name: {
+    transform: 'skew(45deg)',
+    display: 'block',
+    color: '#fff',
   },
-
-  // landingSection: {
-  //   height: 'calc(100vh + 64px)',
-  // },
-  // landingDiv: {
-  //   height: '100%',
-  //   position: 'relative',
-  //   textAlign: 'center',
-  // },
-  // myName: {
-  //   color: theme.palette.secondary.main,
-  // },
-  // tagLine: {
-  //   margin: 0,
-  // },
+  jobTitleDiv: {
+    background: theme.palette.secondary.main,
+    bottom: '10%',
+    right: 0,
+    position: 'absolute',
+    fontSize: '3rem',
+    width: '50%',
+    height: '25%',
+    textAlign: 'center',
+    transform: 'skew(-45deg)',
+    marginRight: 'calc(25vh/-2)',
+    paddingRight: 'calc(25vh/2)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    '@media (max-width: 1024px)': {
+      width: '100%',
+      fontSize: '2rem',
+    },
+  },
+  jobTitleText: {
+    transform: 'skew(45deg)',
+    display: 'block',
+    color: '#fff',
+  },
+  buttonDiv: {
+    alignSelf: 'center',
+  },
+  ctaBtn: {
+    color: '#fff',
+  },
 }));
 
-const Landing = (props) => {
+const Landing = (ref) => {
   const classes = useStyles();
   const landingRef = useRef(null);
 
   useEffect(() => {
-    // Cover Animation
-    TweenMax.to('#landingOverlay h2', 2, {
-      opacity: 0,
-      y: -60,
-      ease: Expo.easeInOut,
-    });
+    // Name and title
 
-    TweenMax.to('#landingOverlay span', 2, {
-      delay: 0.3,
-      opacity: 0,
-      y: -60,
-      ease: Expo.easeInOut,
-    });
-
-    TweenMax.to('#landingOverlay', 2, {
-      delay: 1,
-      top: '-100%',
-      ease: Expo.easeInOut,
-    });
-
-    TweenMax.to('#navBar', 2, {
-      visibility: 'visible',
-    });
-
-    // Circles
-    TweenMax.from('#ellipseContainer', 1, {
+    TweenMax.from('#nameDiv ', 2, {
       delay: 2,
       opacity: 0,
-      ease: Expo.easeInOut,
+      x: '-50vw',
+      ease: Power3.easeInOut,
     });
 
-    TweenMax.from('#colorEllipse', 1, {
-      delay: 3.5,
+    TweenMax.from('#jobTitleDiv ', 2, {
+      delay: 2,
       opacity: 0,
-      ease: Expo.easeInOut,
+      x: '50vw',
+      ease: Power3.easeInOut,
     });
+
+    // // Circles
+    // TweenMax.from('#ellipseContainer', 1, {
+    //   delay: 2,
+    //   opacity: 0,
+    //   ease: Expo.easeInOut,
+    // });
+
+    // TweenMax.from('#colorEllipse', 1, {
+    //   delay: 3.5,
+    //   opacity: 0,
+    //   ease: Expo.easeInOut,
+    // });
   }, []);
 
   const landingIntersection = useIntersection(landingRef, {
@@ -128,10 +128,18 @@ const Landing = (props) => {
   });
 
   const fixateNav = (element) => {
-    gsap.to(element, 1, {
-      position: 'fixed',
-      ease: 'power4.out',
-    });
+    if (document.getElementById('navBar').style.position !== 'fixed') {
+      gsap.fromTo(
+        element,
+        1,
+        { y: '-64' },
+        {
+          y: 0,
+          position: 'fixed',
+          ease: 'power4.out',
+        }
+      );
+    }
   };
 
   const placeNav = (element) => {
@@ -149,42 +157,29 @@ const Landing = (props) => {
       : // not Reached
         fixateNav('#navBar');
   }
+  React.createRef();
 
   return (
     <section id='landing' className={classes.landingSection} ref={landingRef}>
-      <div id='landingOverlay' className={classes.landingOverlay}>
-        <h2 className={classes.overlayName}>Zac Eckert</h2>
-        <span className={classes.overlayDesc}>Front End Developer</span>
-      </div>
-
-      <div className={'wrapper'}>
-        <div className='text'>
-          <div className='title'>Zac Eckert</div>
-          <span>Enthusiastic Front End Developer</span>
+      <div className={classes.wrapper}>
+        <div id='nameDiv' className={classes.nameDiv}>
+          <span className={classes.name}>Zac Eckert</span>
         </div>
 
-        <div id='ellipseContainer' className={classes.ellipseContainer}>
-          {/* <div className='ellipse thick'></div> */}
-          <div id='colorEllipse' className={classes.colorEllipse}></div>
-          <a href='#about'>
-            <Button variant='outlined' color='primary'>
-              New Portfolio who dis?
-            </Button>
-          </a>
+        <div id='buttonDiv' className={classes.buttonDiv}>
+          <Button
+            variant='contained'
+            color='primary'
+            href='#about'
+            className={classes.ctaBtn}
+          >
+            Learn more about me
+          </Button>
         </div>
-      </div>
 
-      {/* OLD LANDING */}
-      <div className={'flex'}>
-        <h1>
-          Hello, I'm <span className={classes.myName}>Zac Eckert</span>
-        </h1>
-        <h1>I'm a Web Developer.</h1>
-
-        <Nav
-          prefersDarkMode={props.prefersDarkMode}
-          setPrefersDarkMode={props.setPrefersDarkMode}
-        />
+        <div id='jobTitleDiv' className={classes.jobTitleDiv}>
+          <span className={classes.jobTitleText}>Front End Developer</span>
+        </div>
       </div>
     </section>
   );
