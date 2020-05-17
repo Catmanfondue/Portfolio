@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
 import SkillCard from './SkillCard';
 
 const useStyles = makeStyles((theme) => ({

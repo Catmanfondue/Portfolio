@@ -2,15 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useIntersection } from 'react-use';
 import gsap from 'gsap';
-import LandingImage from '../../assets/landing.jpg';
-import dontKnowImage from '../../assets/dontKnow.jpg';
 import computerDeskImage from '../../assets/computerDesk.jpg';
 
-import { TweenMax, Expo, Power3 } from 'gsap';
-import Grid from '@material-ui/core/Grid';
+import { TweenMax, Power3 } from 'gsap';
 import Button from '@material-ui/core/Button';
-
-import Nav from '../nav/Nav';
 
 const useStyles = makeStyles((theme) => ({
   landingSection: {

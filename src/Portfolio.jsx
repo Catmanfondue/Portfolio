@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Nav from './components/nav/Nav';
-import { TweenMax, Expo, Power3 } from 'gsap';
+import { TweenMax, Expo } from 'gsap';
 
 import Landing from './components/body/Landing';
 import AboutMe from './components/body/AboutMe';

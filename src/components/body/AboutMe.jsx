@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import gsap from 'gsap';
 import { useIntersection } from 'react-use';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
 import PicOfMe from '../../assets/ZacEckert.jpg';
 import Avatar from '@material-ui/core/Avatar';
 
@@ -63,13 +62,13 @@ const AboutMe = () => {
     threshold: 0.8,
   });
 
-  const fadeOut = (element) => {
-    gsap.to(element, 1, {
-      opacity: 0,
-      y: -20,
-      ease: 'power4.out',
-    });
-  };
+  // const fadeOut = (element) => {
+  //   gsap.to(element, 1, {
+  //     opacity: 0,
+  //     y: -20,
+  //     ease: 'power4.out',
+  //   });
+  // };
 
   const fadeIn = (element) => {
     gsap.to(element, 1, {

@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import gsap, { Power3 } from 'gsap';
 
 // possible imporvement is to have list on left and right and card in center that populates when element is hovered
 
