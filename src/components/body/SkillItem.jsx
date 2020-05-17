@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexBasis: '100%',
     '@media (max-width: 1024px)': {
-      padding: 0,
+      padding: 5,
       flexBasis: '50%',
     },
   },
@@ -21,17 +21,12 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   skillCardImg: {
+    display: 'block',
     margin: 'auto',
     width: '50%',
   },
-  skillImgContainer: {
-    display: 'flex',
-    flex: '1',
-  },
+  skillImgContainer: {},
   skillDescContainer: {
-    // flex: '.6',
-    display: 'flex',
-    alignItems: 'center',
     textTransform: 'capitalize',
   },
 }));
@@ -67,7 +62,7 @@ const SkillItem = (props) => {
         />
       </div>
       <div id='skillDescContainer' className={classes.skillDescContainer}>
-        <h3>{title}</h3>
+        <h3 style={{ textAlign: 'center' }}>{title}</h3>
       </div>
     </div>
   );

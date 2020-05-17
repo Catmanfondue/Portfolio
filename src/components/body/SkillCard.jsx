@@ -34,7 +34,7 @@ const SkillCard = (props) => {
       display: 'flex',
       '@media (max-width: 1024px)': {
         flexWrap: 'wrap',
-        maxHeight: '50vh',
+        // maxHeight: '50vh',
       },
     },
   }));
