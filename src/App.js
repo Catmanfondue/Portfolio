@@ -10,10 +10,7 @@ function App() {
   // if local storage has nothing, or is set to false, return false
   // useMediaQuery is another approach
   let isUsingDarkMode =
-    localStorage.getItem('prefersDarkMode') === null ||
-    localStorage.getItem('prefersDarkMode') === 'false'
-      ? false
-      : true;
+    localStorage.getItem('prefersDarkMode') === 'false' ? false : true;
 
   const [prefersDarkMode, setPrefersDarkMode] = useState(isUsingDarkMode);
 
