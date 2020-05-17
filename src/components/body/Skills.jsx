@@ -1,40 +1,38 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import SkillCard from './SkillCard';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   skillsDiv: {
-    backgroundColor: '#efefef ',
+    backgroundColor: '#e0e0e0',
     color: '#000',
-    height: '100vh',
+    padding: '100px 20px 0 20px',
+    display: 'flex',
+    flexDirection: 'column',
   },
-  rightSide: {
-    backgroundColor: '#ccc',
+  wrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'stretch',
+    margin: '1rem',
   },
-});
+}));
 
 const Skills = () => {
   const classes = useStyles();
+  const theme = useTheme();
+
   return (
-    <Grid id='skills' container item className={classes.skillsDiv}>
-      <Grid item xs={4}>
-        <h1>Skills</h1>
-        <ul>
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>React</li>
-          <li>Javascript</li>
-          <li>JSON</li>
-          <li>JQuery</li>
-          <li>Node</li>
-          <li>SQL</li>
-          <li>Perl</li>
-        </ul>
-      </Grid>
-      <Grid item xs={8} className={classes.rightSide}>
-        <h2>Hello</h2>
-      </Grid>
-    </Grid>
+    <section id='skills' className={classes.skillsDiv}>
+      <h1>Skills</h1>
+
+      <div className={classes.wrapper}>
+        <SkillCard name='Front End' borderColor={theme.palette.primary.main} />
+        <SkillCard name='Back End' borderColor={theme.palette.secondary.main} />
+      </div>
+    </section>
   );
 };
 

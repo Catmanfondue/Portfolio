@@ -1,105 +1,78 @@
-import React from 'react';
-import clsx from 'clsx';
+import React, { useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Drawer from '@material-ui/core/Drawer';
 
-import { Link } from 'react-router-dom';
+import Resume from '../../assets/Eckert_Resume.pdf';
+
 // icons
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import HomeIcon from '@material-ui/icons/Home';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import BuildIcon from '@material-ui/icons/Build';
-import MailIcon from '@material-ui/icons/Mail';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
-
-const drawerWidth = 240;
+import EmailIcon from '@material-ui/icons/Email';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: 36,
-  },
-  hide: {
-    display: 'none',
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-    whiteSpace: 'nowrap',
-  },
-  drawerOpen: {
-    backgroundColor: theme.palette.secondary.main,
-    width: drawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  drawerClose: {
-    backgroundColor: theme.palette.secondary.main,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
+    position: 'absolute',
+    width: '100%',
+    height: 64,
     overflowX: 'hidden',
-    width: theme.spacing(7) + 1,
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9) + 1,
+    '@media (max-width: 1024px)': {},
+  },
+  name: {
+    marginRight: 120,
+    '@media (max-width: 1024px)': { display: 'none' },
+  },
+  linksContainer: {
+    margin: 'auto',
+    display: 'flex',
+    justifyContent: 'space-around',
+    flex: '.6',
+    '@media (max-width: 1024px)': { display: 'none' },
+  },
+  link: {
+    fontSize: '1rem',
+    fontWeight: 600,
+
+    '&:hover': {
+      color: theme.palette.secondary.main,
     },
   },
-  toolbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-  },
-  links: {
-    position: 'absolute',
-    right: 20,
+  professionalLinks: {
+    marginLeft: 'auto',
+    '@media (max-width: 1024px)': {
+      display: 'flex',
+      justifyContent: 'space-evenly;',
+    },
   },
   upperToolBar: {
-    position: 'relative',
-    backgroundColor: theme.palette.primary,
+    backgroundColor: theme.palette.primary.main,
+    height: 64,
+    '@media (max-width: 1024px)': { padding: 0 },
+  },
+  mobileHamburger: {
+    display: 'none',
+    '@media (max-width: 1024px)': { display: 'block' },
+  },
+  mobileNavList: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  mobileLink: {
+    padding: 30,
   },
 }));
 
 const Nav = (props) => {
   const classes = useStyles();
   const theme = useTheme();
-  const open = props.drawerOpen;
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const switchTheme = () => {
     let prefersDarkMode = !props.prefersDarkMode;
@@ -109,30 +82,42 @@ const Nav = (props) => {
 
   return (
     <div className={classes.root}>
-      <AppBar
-        position='fixed'
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
+      <AppBar position='sticky' id='navBar'>
         <Toolbar className={classes.upperToolBar}>
+          <Typography variant='h6' noWrap className={classes.name}>
+            Zachary Eckert
+          </Typography>
+          <div className={classes.linksContainer}>
+            <a id='navLinkHome' href='#landing' className={classes.link}>
+              Home
+            </a>
+            <a id='navLinkAbout' href='#about' className={classes.link}>
+              About
+            </a>
+            <a id='navLinkSkills' href='#skills' className={classes.link}>
+              Skills
+            </a>
+            <a id='navLinkContact' href='#contactMe' className={classes.link}>
+              Contact
+            </a>
+            <a
+              href={Resume}
+              target='_blank'
+              rel='noopener noreferrer'
+              className={classes.link}
+            >
+              Resume
+            </a>
+          </div>
           <IconButton
-            aria-label='open drawer'
+            className={classes.mobileHamburger}
             onClick={() => {
-              props.setDrawerOpen(true);
+              setDrawerOpen(true);
             }}
-            edge='start'
-            className={clsx(classes.menuButton, {
-              [classes.hide]: open,
-            })}
           >
             <MenuIcon />
           </IconButton>
-
-          <Typography variant='h6' noWrap>
-            Zachary Eckert
-          </Typography>
-          <div className={classes.links}>
+          <div className={classes.professionalLinks}>
             <FormControlLabel
               control={
                 <Switch
@@ -142,6 +127,16 @@ const Nav = (props) => {
               }
               label='Dark Mode'
             />
+
+            <a
+              href='mailto:zaceckert74@gmail.com'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <IconButton>
+                <EmailIcon />
+              </IconButton>
+            </a>
 
             <a
               href='https://www.linkedin.com/in/zachary-eckert-400922134/'
@@ -165,67 +160,55 @@ const Nav = (props) => {
         </Toolbar>
       </AppBar>
       <Drawer
-        variant='permanent'
-        color={'secondary'}
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        })}
-        classes={{
-          paper: clsx({
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open,
-          }),
+        open={drawerOpen}
+        anchor='top'
+        onClose={() => {
+          setDrawerOpen(false);
         }}
       >
-        <div className={classes.toolbar}>
-          <IconButton
-            onClick={() => {
-              props.setDrawerOpen(false);
-            }}
+        <div
+          className={classes.mobileNavList}
+          role='presentation'
+          onClick={() => setDrawerOpen(false)}
+          onKeyDown={() => setDrawerOpen(false)}
+        >
+          <a
+            id='mobileNavLinkHome'
+            href='#landing'
+            className={classes.mobileLink}
           >
-            {theme.direction === 'rtl' ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
+            Home
+          </a>
+          <a
+            id='mobileNavLinkAbout'
+            href='#about'
+            className={classes.mobileLink}
+          >
+            About
+          </a>
+          <a
+            id='mobileNavLinkSkills'
+            href='#skills'
+            className={classes.mobileLink}
+          >
+            Skills
+          </a>
+          <a
+            id='mobileNavLinkContact'
+            href='#contactMe'
+            className={classes.mobileLink}
+          >
+            Contact
+          </a>
+          <a
+            href={Resume}
+            target='_blank'
+            rel='noopener noreferrer'
+            className={classes.mobileLink}
+          >
+            Resume
+          </a>
         </div>
-        <Divider />
-        <List>
-          <Link to='/'>
-            <ListItem button key={'Home'}>
-              <ListItemIcon>
-                <HomeIcon />
-              </ListItemIcon>
-              <ListItemText primary={'Home'} />
-            </ListItem>
-          </Link>
-          <Link to='/About'>
-            <ListItem button key={'About'}>
-              <ListItemIcon>
-                <AccountCircleIcon />
-              </ListItemIcon>
-              <ListItemText primary={'About'} />
-            </ListItem>
-          </Link>
-          <Link to='/Skills'>
-            <ListItem button key={'Skills'}>
-              <ListItemIcon>
-                <BuildIcon />
-              </ListItemIcon>
-              <ListItemText primary={'Skills'} />
-            </ListItem>
-          </Link>
-          <Link to='/Contact'>
-            <ListItem button key={'Contact'}>
-              <ListItemIcon>
-                <MailIcon />
-              </ListItemIcon>
-              <ListItemText primary={'Contact'} />
-            </ListItem>
-          </Link>
-        </List>
       </Drawer>
     </div>
   );
