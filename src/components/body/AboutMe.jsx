@@ -104,9 +104,9 @@ const AboutMe = () => {
               Development from Northeast Wisconsin Technical College.
               <br />
               <br />
-              When I'm not at work you can find me at playing basketball,
-              working out, or at a local coffee shop on a fun side project or
-              learning something new!
+              When I'm not at work you can find me at the gym playing
+              basketball, working out, or at a local coffee shop on a fun side
+              project or learning something new!
             </p>
           </div>
           <div className={classes.aboutRight}>

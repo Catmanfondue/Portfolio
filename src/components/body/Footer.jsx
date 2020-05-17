@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
   backToTopBtn: {
     background: theme.palette.primary.main,
+    color: '#fff',
     margin: 'auto',
     display: 'block',
     width: 48,
@@ -44,7 +45,7 @@ const Footer = () => {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <IconButton>
+            <IconButton className={classes.footnote}>
               <EmailIcon />
             </IconButton>
           </a>
@@ -54,7 +55,7 @@ const Footer = () => {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <IconButton>
+            <IconButton className={classes.footnote}>
               <LinkedInIcon />
             </IconButton>
           </a>
@@ -63,7 +64,7 @@ const Footer = () => {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <IconButton>
+            <IconButton className={classes.footnote}>
               <GitHubIcon />
             </IconButton>
           </a>
