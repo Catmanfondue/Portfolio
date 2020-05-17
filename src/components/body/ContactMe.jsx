@@ -189,11 +189,11 @@ const ContactMe = () => {
           </div>
           <div className={classes.checkeredDescDiv}>
             <div id='fullTimeRight' className={classes.descContent}>
-              <h2 className={classes.rowTitle}>Full Time Opportunities</h2>
+              <h2 className={classes.rowTitle}>Full Time Positions</h2>
               <p className={classes.descText}>
-                I am planning a move out of my hometown of Green Bay, Wisconsin
-                and am actively looking for Front-End and Full-Stack job
-                opportunities in the following areas:
+                I am planning to relocate to a new area. Currently, I am looking
+                for Front End and Full Stack job positions in the following
+                areas:
               </p>
               <ul>
                 <li>Denver, Colorado</li>
@@ -222,15 +222,15 @@ const ContactMe = () => {
         >
           <div className={classes.checkeredDescDiv}>
             <div id='freeLanceLeft' className={classes.descContent}>
-              <h2 className={classes.rowTitle}>Freelance Opportunities</h2>
+              <h2 className={classes.rowTitle}>Freelance Projects</h2>
               <p className={classes.descText}>
-                I am always open to Freelance opportunities and would love to
-                help you share your idea or product with the world. It's
-                important to me to make sure that the websites I create are:
+                I am always open to freelance projects and I am eager to help
+                you share your idea or product with the world. It's important to
+                me to make sure that your website will be:
               </p>
               <ul>
-                <li>Mobile Friendly</li>
                 <li>Fast</li>
+                <li>Mobile Friendly</li>
                 <li>User Friendly</li>
               </ul>
             </div>
@@ -256,12 +256,17 @@ const ContactMe = () => {
           </div>
           <div className={classes.checkeredDescDiv}>
             <div id='volunteerRight' className={classes.descContent}>
-              <h2 className={classes.rowTitle}>volunteer Opportunities</h2>
+              <h2 className={classes.rowTitle}>Volunteer Opportunities</h2>
               <p className={classes.descText}>
-                I personally wish that I was exposed to technology and
-                programming when I was younger. Both my mother and my partner
-                are educators and I would love the chance to share my knowledge
-                with someone who wants to learn more about programming.
+                Technology is an ever-evolving industry. I would have benefited
+                tremendously from an early introduction and experimentation with
+                programming. I am highly interested in helping youth today
+                discover the in’s and out’s of programming.
+              </p>
+              <p className={classes.descText}>
+                My mother and my partner are educators, so I have some guidance
+                in establishing age-appropriate and engaging tech lessons. I am
+                eager to share my knowledge of programming with youth!
               </p>
             </div>
           </div>
