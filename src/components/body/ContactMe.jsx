@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 // images
 import FullTime from '../../assets/fullTime.jpg';
 import FreeLance from '../../assets/freeLance.jpg';
-import Voulenteer from '../../assets/voulenteer.jpg';
+import volunteer from '../../assets/volunteer.jpg';
 
 const useStyles = makeStyles((theme) => ({
   contactMe: {
@@ -84,13 +84,13 @@ const useStyles = makeStyles((theme) => ({
 const ContactMe = () => {
   const [fullTimeAnimated, setFullTimeAnimated] = useState(false);
   const [freeLanceAnimated, setFreeLanceAnimated] = useState(false);
-  const [voulenteerAnimated, setVoulenteerAnimated] = useState(false);
+  const [volunteerAnimated, setvolunteerAnimated] = useState(false);
 
   const classes = useStyles();
 
   const fullTimeDivRef = useRef(null);
   const freeLanceDivRef = useRef(null);
-  const voulenteerDivRef = useRef(null);
+  const volunteerDivRef = useRef(null);
 
   // threshhold and intersection ratio should equal
   const fullTimeIntersection = useIntersection(fullTimeDivRef, {
@@ -105,7 +105,7 @@ const ContactMe = () => {
     threshold: 0.4,
   });
 
-  const voulenteerIntersection = useIntersection(voulenteerDivRef, {
+  const volunteerIntersection = useIntersection(volunteerDivRef, {
     root: null,
     rootMargin: '0px',
     threshold: 0.4,
@@ -157,12 +157,12 @@ const ContactMe = () => {
     }
   }
 
-  if (voulenteerIntersection && !voulenteerAnimated) {
-    if (voulenteerIntersection.intersectionRatio > 0.4) {
-      fadeIn('voulenteer');
-      setVoulenteerAnimated(true);
+  if (volunteerIntersection && !volunteerAnimated) {
+    if (volunteerIntersection.intersectionRatio > 0.4) {
+      fadeIn('volunteer');
+      setvolunteerAnimated(true);
     } else {
-      fadeOut('voulenteer');
+      fadeOut('volunteer');
     }
   }
 
@@ -244,19 +244,19 @@ const ContactMe = () => {
             />
           </div>
         </div>
-        {/* Voulenteer */}
-        <div id='voulenteer' ref={voulenteerDivRef} className={classes.child}>
+        {/* volunteer */}
+        <div id='volunteer' ref={volunteerDivRef} className={classes.child}>
           <div className={classes.checkeredImageDiv}>
             <img
-              id='voulenteerLeft'
-              src={Voulenteer}
-              alt='Voulenteer'
+              id='volunteerLeft'
+              src={volunteer}
+              alt='volunteer'
               className={classes.image}
             />
           </div>
           <div className={classes.checkeredDescDiv}>
-            <div id='voulenteerRight' className={classes.descContent}>
-              <h2 className={classes.rowTitle}>Voulenteer Opportunities</h2>
+            <div id='volunteerRight' className={classes.descContent}>
+              <h2 className={classes.rowTitle}>volunteer Opportunities</h2>
               <p className={classes.descText}>
                 I personally wish that I was exposed to technology and
                 programming when I was younger. Both my mother and my partner

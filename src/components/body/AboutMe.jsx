@@ -100,13 +100,14 @@ const AboutMe = () => {
           <div className={classes.aboutLeft}>
             <p className={classes.aboutMeDesc}>
               Hello, my name is Zachary Eckert. I am a Front-End developer from
-              Green Bay, Wisconsin. I have an an Assoicate's Degree in Software
+              Green Bay, Wisconsin. I have an an associate's degree in Software
               Development from Northeast Wisconsin Technical College.
               <br />
               <br />
-              When I'm not at work you can find me at the gym playing
-              basketball, working out, or at a local coffee shop on a fun side
-              project or learning something new!
+              Outside of work, you can often find me staying active by playing
+              basketball or strength training at the gym. I also enjoy taking my
+              dog on walks and spending time outside. More causally, I visit
+              local coffee shops to develop side projects or learn new tech!
             </p>
           </div>
           <div className={classes.aboutRight}>
