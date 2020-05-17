@@ -22,11 +22,9 @@ const SkillCard = (props) => {
       margin: 'auto',
       width: '50%',
       padding: 10,
+      display: 'block',
     },
-    skillImgContainer: {
-      display: 'flex',
-      flex: '1',
-    },
+    skillImgContainer: {},
     skillDescContainer: {
       // flex: '.6',
       display: 'flex',
@@ -36,6 +34,7 @@ const SkillCard = (props) => {
       display: 'flex',
       '@media (max-width: 1024px)': {
         flexWrap: 'wrap',
+        maxHeight: '50vh',
       },
     },
   }));
