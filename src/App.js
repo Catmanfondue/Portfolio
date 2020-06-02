@@ -21,10 +21,10 @@ function App() {
         palette: {
           type: prefersDarkMode ? 'dark' : 'light',
           primary: {
-            main: '#177e89',
+            main: '#222e50',
           },
           secondary: {
-            main: '#222e50',
+            main: '#b76d68',
           },
         },
       });
@@ -33,10 +33,10 @@ function App() {
         palette: {
           type: prefersDarkMode ? 'dark' : 'light',
           primary: {
-            main: '#177e89',
+            main: '#222e50',
           },
           secondary: {
-            main: '#222e50',
+            main: '#b76d68',
           },
         },
       });
