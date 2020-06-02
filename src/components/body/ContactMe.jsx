@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import FullTime from '../../assets/fullTime.jpg';
 import FreeLance from '../../assets/freeLance.jpg';
 import volunteer from '../../assets/volunteer.jpg';
+import Resume from '../../assets/Eckert_Resume.pdf';
 
 const useStyles = makeStyles((theme) => ({
   contactMe: {
@@ -202,11 +203,7 @@ const ContactMe = () => {
                 <li>Remote Positions</li>
               </ul>
 
-              <a
-                href='/static/media/Eckert_Resume.6d10ee19.pdf'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
+              <a href={Resume} target='_blank' rel='noopener noreferrer'>
                 <Button variant={'contained'} color={'primary'}>
                   View Resume
                 </Button>
