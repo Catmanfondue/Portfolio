@@ -24,7 +24,7 @@ function App() {
             main: '#222e50',
           },
           secondary: {
-            main: '#b76d68',
+            main: '#e48780',
           },
         },
       });
@@ -36,7 +36,7 @@ function App() {
             main: '#222e50',
           },
           secondary: {
-            main: '#b76d68',
+            main: '#e48780',
           },
         },
       });
