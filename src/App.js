@@ -24,7 +24,7 @@ function App() {
             main: '#4dd69b',
           },
           secondary: {
-            main: '#f56b53',
+            main: '#b92446',
           },
         },
       });
@@ -36,11 +36,12 @@ function App() {
             main: '#4dd69b',
           },
           secondary: {
-            main: '#f56b53',
+            main: '#b92446',
           },
         },
       });
     }
+
     return renderedTheme;
   };
 

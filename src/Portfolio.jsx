@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     color: '#fff',
     '@media (max-width: 1024px)': {
+      // height 100vh mobile
       height: '-webkit-fill-available',
       textAlign: 'center',
     },
@@ -80,10 +81,7 @@ const Portfolio = (props) => {
           <h2 className={classes.overlayName}>Zac Eckert</h2>
           <span className={classes.overlayDesc}>Front End Developer</span>
         </div>
-        <Landing
-          prefersDarkMode={props.prefersDarkMode}
-          setPrefersDarkMode={props.setPrefersDarkMode}
-        />
+        <Landing />
 
         <Nav
           prefersDarkMode={props.prefersDarkMode}
