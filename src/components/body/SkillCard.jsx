@@ -43,9 +43,9 @@ const SkillCard = (props) => {
   let skills = [];
 
   if (props.name === 'Front End') {
-    skills = ['react', 'javascript', 'html', 'css', 'sass', 'jquery'];
+    skills = ['react', 'javascript', 'html', 'css', 'sass'];
   } else if (props.name === 'Back End') {
-    skills = ['sql', 'node', 'perl', 'mongo', 'cSharp'];
+    skills = ['sql', 'node', 'mongo', 'cSharp'];
   }
 
   return (

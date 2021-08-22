@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import './App.scss';
 import Portfolio from './Portfolio';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { Paper } from '@material-ui/core';
-
+import { Paper, CssBaseline } from '@material-ui/core';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 function App() {
-  // if local storage has nothing, or is set to false, return false
-  // useMediaQuery is another approach
   let isUsingDarkMode =
     localStorage.getItem('prefersDarkMode') === 'false' ? false : true;
 
@@ -16,31 +12,26 @@ function App() {
 
   const makeTheme = () => {
     let renderedTheme;
+    let palleteType = 'light';
+  
     if (prefersDarkMode) {
-      renderedTheme = createMuiTheme({
-        palette: {
-          type: prefersDarkMode ? 'dark' : 'light',
-          primary: {
-            main: '#222e50',
-          },
-          secondary: {
-            main: '#e48780',
-          },
-        },
-      });
-    } else {
-      renderedTheme = createMuiTheme({
-        palette: {
-          type: prefersDarkMode ? 'dark' : 'light',
-          primary: {
-            main: '#222e50',
-          },
-          secondary: {
-            main: '#e48780',
-          },
-        },
-      });
+      palleteType = 'dark';
     }
+
+    renderedTheme = createMuiTheme({
+      palette: {
+        type: palleteType,
+        primary: {
+          main: '#222e50',
+        },
+        secondary: {
+          main: '#188b7b',
+        },
+        background: {
+          default: '#001220',
+        }
+      },
+    });
 
     return renderedTheme;
   };

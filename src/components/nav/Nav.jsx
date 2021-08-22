@@ -84,7 +84,7 @@ const Nav = (props) => {
       <AppBar position='sticky' id='navBar'>
         <Toolbar className={classes.upperToolBar}>
           <Typography variant='h6' noWrap className={classes.name}>
-            Zachary Eckert
+            Zac Eckert
           </Typography>
           <div className={classes.linksContainer}>
             <a id='navLinkHome' href='#landing' className={classes.link}>

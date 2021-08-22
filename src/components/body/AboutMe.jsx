@@ -4,10 +4,10 @@ import { useIntersection } from 'react-use';
 import { makeStyles } from '@material-ui/core/styles';
 import PicOfMe from '../../assets/ZacEckert.jpg';
 import Avatar from '@material-ui/core/Avatar';
+import WaveDivider from '../dividers/WaveDivider';
 
 const useStyles = makeStyles((theme) => ({
   aboutMeDiv: {
-    padding: '100px 20px 0 20px',
     marginTop: 1,
     height: '100vh',
     display: 'flex',
@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-width: 1024px)': {
       height: 'unset',
     },
+    backgroundColor: theme.palette.background.default,
   },
   aboutContent: {
     display: 'flex',
@@ -62,14 +63,6 @@ const AboutMe = () => {
     threshold: 0.8,
   });
 
-  // const fadeOut = (element) => {
-  //   gsap.to(element, 1, {
-  //     opacity: 0,
-  //     y: -20,
-  //     ease: 'power4.out',
-  //   });
-  // };
-
   const fadeIn = (element) => {
     gsap.to(element, 1, {
       opacity: 1,
@@ -85,23 +78,19 @@ const AboutMe = () => {
     if (aboutInterSection && aboutInterSection.intersectionRatio > 0.8) {
       fadeIn('.aboutFadeIn');
     }
-    // only want to play once
-    // else {
-    //   fadeOut('.aboutFadeIn');
-    // }
   }
 
   const classes = useStyles();
   return (
-    <React.Fragment>
       <section id='about' ref={aboutRef} className={classes.aboutMeDiv}>
+ 
+        <WaveDivider />
         <h1>About Me</h1>
         <div className={classes.aboutContent + ' aboutFadeIn'}>
           <div className={classes.aboutLeft}>
             <p className={classes.aboutMeDesc}>
-              Hello, my name is Zachary Eckert. I am a Front-End developer from
-              Green Bay, Wisconsin. I have an an associate's degree in Software
-              Development from Northeast Wisconsin Technical College.
+              Hello, my name is Zac Eckert. I graduated with an associate's degree in Software
+              Development from Northeast Wisconsin Technical College. Since then, I have been a fulltime developer since 2018 and have loved every bit of it. 
               <br />
               <br />
               Outside of work, you can often find me staying active by playing
@@ -115,7 +104,6 @@ const AboutMe = () => {
           </div>
         </div>
       </section>
-    </React.Fragment>
   );
 };
 

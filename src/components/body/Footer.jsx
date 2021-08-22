@@ -37,7 +37,7 @@ const Footer = () => {
           <ArrowUpwardIcon />
         </IconButton>
 
-        <span className={classes.footnote}>Zachary Eckert 2020</span>
+        <span className={classes.footnote}>Zac Eckert 2020</span>
 
         <div className={classes.professionalLinks}>
           <a

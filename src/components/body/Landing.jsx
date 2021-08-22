@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Landing = (ref) => {
+const Landing = () => {
   const classes = useStyles();
   const landingRef = useRef(null);
 
@@ -102,18 +102,6 @@ const Landing = (ref) => {
       ease: Power3.easeInOut,
     });
 
-    // // Circles
-    // TweenMax.from('#ellipseContainer', 1, {
-    //   delay: 2,
-    //   opacity: 0,
-    //   ease: Expo.easeInOut,
-    // });
-
-    // TweenMax.from('#colorEllipse', 1, {
-    //   delay: 3.5,
-    //   opacity: 0,
-    //   ease: Expo.easeInOut,
-    // });
   }, []);
 
   const landingIntersection = useIntersection(landingRef, {
@@ -144,6 +132,7 @@ const Landing = (ref) => {
       ease: 'power4.out',
     });
   };
+
   if (landingIntersection !== null) {
     // if the landing is visible just let it act normal, otherwise fixate it.
     landingIntersection.intersectionRatio > 0
@@ -152,7 +141,6 @@ const Landing = (ref) => {
       : // not Reached
         fixateNav('#navBar');
   }
-  React.createRef();
 
   return (
     <section id='landing' className={classes.landingSection} ref={landingRef}>
@@ -173,7 +161,7 @@ const Landing = (ref) => {
         </div>
 
         <div id='jobTitleDiv' className={classes.jobTitleDiv}>
-          <span className={classes.jobTitleText}>Front End Developer</span>
+          <span className={classes.jobTitleText}>Full Stack Developer</span>
         </div>
       </div>
     </section>
