@@ -27,8 +27,12 @@ function App() {
         secondary: {
           main: '#188b7b',
         },
-        background: {
+        background: palleteType === 'dark' ? {
           default: '#001220',
+          secondary: '#424242',
+        } : {
+          default: '#e3e3e3',
+          secondary: '#DBF9F0'
         }
       },
     });

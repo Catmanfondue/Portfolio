@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useIntersection } from 'react-use';
 import gsap from 'gsap';
-import computerDeskImage from '../../assets/computerDesk.jpg';
 
 import { TweenMax, Power3 } from 'gsap';
 import Button from '@material-ui/core/Button';
@@ -11,13 +10,14 @@ const useStyles = makeStyles((theme) => ({
   landingSection: {
     width: '100%',
     height: '100vh',
+    backgroundColor: theme.palette.background.default,
     '@media (max-width: 1024px)': {},
   },
   wrapper: {
     width: '100%',
     height: '100%',
     position: 'relative',
-    background: [[`url(${computerDeskImage})`, 'no-repeat']],
+    // background: [[`url(${computerDeskImage})`, 'no-repeat']],
     backgroundPosition: '50%',
     backgroundSize: 'cover',
     overflow: 'hidden',
@@ -161,7 +161,7 @@ const Landing = () => {
         </div>
 
         <div id='jobTitleDiv' className={classes.jobTitleDiv}>
-          <span className={classes.jobTitleText}>Full Stack Developer</span>
+          <span className={classes.jobTitleText}>Front End Engineer</span>
         </div>
       </div>
     </section>

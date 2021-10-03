@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '100px 20px 0 20px',
     display: 'flex',
     flexDirection: 'column',
+    backgroundColor: theme.palette.background.default,
   },
   container: {
     display: 'flex',
@@ -192,17 +193,9 @@ const ContactMe = () => {
             <div id='fullTimeRight' className={classes.descContent}>
               <h2 className={classes.rowTitle}>Full Time Positions</h2>
               <p className={classes.descText}>
-                I am planning to relocate to a new area. Currently, I am looking
-                for Front End and Full Stack job positions in the following
-                areas:
+                I love working remote. If you have a   
               </p>
-              <ul>
-                <li>Denver, Colorado</li>
-                <li>Salt Lake City, Utah</li>
-                <li>Minneapolis, Minnesota</li>
-                <li>Remote Positions</li>
-              </ul>
-
+              
               <a href={Resume} target='_blank' rel='noopener noreferrer'>
                 <Button variant={'contained'} color={'primary'}>
                   View Resume

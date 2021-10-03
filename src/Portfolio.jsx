@@ -79,7 +79,7 @@ const Portfolio = (props) => {
       <main className={classes.content}>
         <div id='landingOverlay' className={classes.landingOverlay}>
           <h2 className={classes.overlayName}>Zac Eckert</h2>
-          <span className={classes.overlayDesc}>Full Stack Developer</span>
+          <h2 className={classes.overlayDesc}>Front End Engineer</h2>
         </div>
         <Landing />
 
