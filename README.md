@@ -1,5 +1,7 @@
-Hello, this is my personal website.
+This site is outdated! It is my old portfolio. 
 
-It is still very much a work in progress but I wanted something live to demonstrate my knowledge of React and website coding.
+My new one was build with Next.JS and added some new information. You can check it out here: https://github.com/Catmanfondue/Zac-Eckert-Portfolio
 
-Thanks for checking it out!
+Feel free to still look over this one though if you're interested. 
+
+Thanks!
